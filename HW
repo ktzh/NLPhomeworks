@@ -10,3 +10,69 @@ alpha = float (input())
 from math import sqrt, cos
 a = sqrt (b*b + c*c - 2*b*c*cos (alpha))
 print("a =", float(a))
+
+#hw2
+
+print("Это программа, которая выводит введённое число прописью")
+
+def writing (num):
+    words = ["ноль", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять", "десять"]
+    if num <= 10:
+        return words[num]
+    if num <= 19:
+        if num % 10 in (1, 3):
+            return words[num % 10] + 'надцать'
+        if num % 10 == 2:
+            return words[num % 10][:-1] + 'енадцать'
+        return words[num % 10][:-1] + 'надцать'
+    if 20 <= num <= 39:
+        return words[num // 10] + 'дцать' + ' ' + words[num % 10]    
+    if 40 <= num <= 49:
+        return 'сорок' + ' ' + words[num % 10]
+    if 50 <= num <= 89:
+        return words[num // 10] + 'десят' + ' ' + words[num % 10]
+    if 90 <= num <= 99:
+        return 'девяносто' + ' ' + words[num % 10]
+
+a = input("Введите целое число от 0 до 99 ")
+if not a.isdigit():
+    print("Вы должны ввести целое число")
+elif int (a) >= 100: print("Введите число от 0 до 99")
+else:
+    a = int(a)
+    print(writing(a))
+
+#hw3
+
+temp = input()
+if temp[-1] == "C":
+    res = round(9/5 * float(temp[:-1]) + 32, 2)
+    res = str(res) + "F"
+elif temp[-1] == "F":
+    res = round(5/9 * float(input_temp[:-1]) - 32, 2)
+    res = str(res) + "C"
+else:
+    res = "Ошибка ввода"
+print(res)
+
+#hw4
+
+num = input("Введите натуральное число: ")
+if not num.isdigit():
+    print("Ошибка ввода")
+else:
+    num = int(num)
+    if num < 2:
+        print("Ошибка ввода")
+    else:
+        flag = [True] * (num + 1)
+        flag [0] = flag[1] = False
+        p = 2
+        while p * p <= num:
+            if flag[p]:
+                for multiple in range(p * p, num + 1, p):
+                    flag [multiple] = False
+            p += 1
+        primes = [i for i in range(num + 1) if flag[i]]
+        for prime in primes:
+            print(prime)
