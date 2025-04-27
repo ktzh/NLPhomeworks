@@ -1,0 +1,12 @@
+#hw1
+
+print("Это программа, которая считает длину третьей стороны (a) треугольника по двум другим сторонам (b и c) и углу между ними (α)")
+print("Введите длину стороны b")
+b = float (input())
+print("Введите длину стороны c")
+c = float (input())
+print("Введите величину угла α")
+alpha = float (input())
+from math import sqrt, cos
+a = sqrt (b*b + c*c - 2*b*c*cos (alpha))
+print("a =", float(a))
